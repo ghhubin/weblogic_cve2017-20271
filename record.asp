@@ -2,16 +2,28 @@
 <font size="4" color="#FF0000"><b>record string in strings.txt</b> </font>
 
 <%
-dim XKey,strLogFile,strString,strDate
-strDate=year(date)&month(date)&day(date)
+dim strKey,strLogFile,strString,strDate,strMonth,strDay
+
+if len(Month(date))=1 then
+  strMonth="0"&Month(date)
+else
+  strMonth=Month(date)
+end if
+if len(day(date))=1 then
+  strDay="0"&day(date)
+else
+  strDay=day(date)
+end if
+
+strDate=year(date)&strMonth&strDay
 strLogFile="strings"&strDate&".txt"
-XKey=request("str")
-if XKey=""  then
+strKey=request("str")
+if str
+Key=""  then
   response.write "String is empty!"
   response.end
 End If
-StrString=StrString&XKey
-StrString=StrString&" "&strDate&" "&time
+strString=strKey&" "&strDate&" "&time
 
 set f=Server.CreateObject("scripting.filesystemobject")
 set ff=f.opentextfile(server.mappath(".")&"\"&strLogFile,8,true,0)
